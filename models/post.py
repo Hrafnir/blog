@@ -31,12 +31,12 @@ class Post:
 
     @classmethod
     def from_mongo(cls, id):
-        post_data = Database.find_one(collection='posts', query={'id': id})
-        return cls(blog_id=post_data['blog_id'],
-                   title=post_data['title'],
-                   content=post_data['content'],
-                   author=post_data['author'],
-                   created_date=post_data['created_date'],
+        post_data = Database.find_one(collection='articles', query={'id': id})
+        return cls(blog_id=post_data['Blog_id'],
+                   title=post_data['Title'],
+                   content=post_data['Content'],
+                   author=post_data['Author'],
+                   created_date=post_data['Created_date'],
                    post_id=post_data['id'])
 
     @staticmethod

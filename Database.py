@@ -9,8 +9,8 @@ class Database:
 
     @staticmethod
     def initializing_main_db():
-        clinet = pymongo.MongoClient(Database.uri)
-        Database.database = clinet ['blog']
+        client = pymongo.MongoClient(Database.uri)
+        Database.database = client['blog']
 
     @staticmethod
     def insert(collection, data):

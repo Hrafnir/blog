@@ -1,18 +1,15 @@
 from Database import Database
 from models.post import Post
+from models.Blog import Blog
 
 __author__ = 'hraffy'
 
 Database.initializing_main_db()
 
-post = Post.from_mongo('728d2af26bc7436c92b53d3523d85678')
-print(post)
+blog = Blog('Jose', 'Same title', 'Same_sedsafasdv')
 
-
-
-
-
-
+blog.save_to_db()
+blog.new_post()
 
 
 

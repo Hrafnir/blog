@@ -1,7 +1,7 @@
 from Database import Database
 import uuid
 import datetime
-import models.post
+from models.post import Post
 
 
 class Blog:
@@ -16,14 +16,19 @@ class Blog:
         content = input('Enter post content: ')
         title = input('Enter post title: ')
         date = input('Enter post date, or leave blank if u want to generate it automaticaly(DDMMYYYY): ')
+        if date == '':
+            date = datetime.datetime.utcnow()
+        else:
+            date = datetime.datetime.strptime(date, '%d%m%Y')
         post = Post(blog_id=self.id,
                     title=title,
                     content=content,
                     author=self.author,
-                    date=datetime.datetime.strptime(date, '%d%m%Y'))
+                    created_date=date)
         post.save_to_db()
+
     def get_posts(self):
-        return models.Post.from_blog(self.id)
+        return Post.from_blog(self.id)
 
     def save_to_db(self):
         Database.insert(collection='blogs',
