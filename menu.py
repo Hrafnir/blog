@@ -4,7 +4,7 @@ from models.Blog import Blog
 __author__ = 'jslvtr'
 
 
-class Menu(object):
+class Menu:
     def __init__(self):
         self.user = input("Enter your author name: ")
         self.user_blog = None
@@ -14,9 +14,9 @@ class Menu(object):
             self._prompt_user_for_account()
 
     def _user_has_account(self):
-        blog = Database.find_one('blogs', {'author': self.user})
+        blog = Database.find_one('blogs', {'Author': self.user})
         if blog is not None:
-            self.user_blog = Blog.get_from_mongo(blog['id'])
+            self.user_blog = Blog.get_from_mongo(blog['Blog_id'])
             return True
         else:
             return False
@@ -35,7 +35,6 @@ class Menu(object):
         if read_or_write == 'R':
             self._list_blogs()
             self._view_blog()
-            pass
         elif read_or_write == 'W':
             self.user_blog.new_post()
         else:

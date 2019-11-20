@@ -6,14 +6,12 @@ __author__ = 'hraffy'
 
 Database.initializing_main_db()
 
-blog = Blog('Jose', 'Same title', 'Same_sedsafasdv')
+blob = Blog(author='Glob', description='One more bloggest blog', title='Bloggest!')
+blob.new_post()
 
-blog.save_to_db()
-blog.new_post()
-
-
-
-
+blob.save_to_db()
+from_db = Blog.get_from_mongo(blob.blog_id)
+print(blob.get_posts())
 
 
 
