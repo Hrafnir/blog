@@ -1,4 +1,4 @@
-from database import Database
+from Database import Database
 from models.Blog import Blog
 
 __author__ = 'jslvtr'
@@ -40,15 +40,17 @@ class Menu:
         else:
             print("Thank you for blogging!")
 
-    def _list_blogs(self):
+    @staticmethod
+    def _list_blogs():
         blogs = Database.find(collection='blogs',
                               query={})
         for blog in blogs:
-            print("ID: {}, Title: {}, Author: {}".format(blog['id'], blog['title'], blog['author']))
+            print("ID: {}, Title: {}, Author: {}".format(blog['Blog_id'], blog['Title'], blog['Author']))
 
-    def _view_blog(self):
+    @staticmethod
+    def _view_blog():
         blog_to_see = input("Enter the ID of the blog you'd like to read: ")
         blog = Blog.get_from_mongo(blog_to_see)
         posts = blog.get_posts()
         for post in posts:
-            print("Date: {}, title: {}\n\n{}".format(post['created_date'], post['title'], post['content']))
+            print("Date: {}, title: {}\n\n{}".format(post['Created_date'], post['Title'], post['Content']))

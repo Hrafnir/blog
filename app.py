@@ -1,17 +1,15 @@
 from Database import Database
 from models.post import Post
 from models.Blog import Blog
+from menu import Menu
+
 
 __author__ = 'hraffy'
 
 Database.initializing_main_db()
 
-blob = Blog(author='Glob', description='One more bloggest blog', title='Bloggest!')
-blob.new_post()
-
-blob.save_to_db()
-from_db = Blog.get_from_mongo(blob.blog_id)
-print(blob.get_posts())
+menu = Menu()
+menu.run_menu()
 
 
 
